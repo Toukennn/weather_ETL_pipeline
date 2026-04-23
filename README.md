@@ -111,7 +111,7 @@ weather-etl-pipeline/
 
 ---
 ## 🔄 ETL Workflow
-1. Extract
+### 1. Extract
 
 The pipeline sends a request to the OpenWeatherMap API and retrieves weather data in JSON format.
 
@@ -123,7 +123,7 @@ Example extracted information:
 - pressure
 - weather description
 - timestamp
-2. Transform
+### 2. Transform
 
 The raw response is cleaned and transformed into a structured dataset.
 
@@ -134,7 +134,7 @@ Typical transformations include:
 - converting data types
 - formatting timestamps
 - creating a CSV-ready table
-3. Load
+### 3. Load
 
 The final processed data is stored in two destinations:
 
