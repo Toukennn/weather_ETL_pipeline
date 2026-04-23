@@ -98,7 +98,7 @@ weather_ETL_pipeline/
 │   ├── __init__.py
 │
 ├── data/
-│   └── weather_data.csv
+│   └── weather_data.png
 │
 ├── docker/
 │   ├── Dockerfile
