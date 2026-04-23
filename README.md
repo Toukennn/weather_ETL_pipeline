@@ -96,7 +96,13 @@ weather-etl-pipeline/
 │
 ├── data/
 │   └── weather_data.csv
-│
+|
+|
+├── docker/
+│   ├── Dockerfile
+│   └── docker-compose.yml
+|
+|
 ├── screenshots/
 │   ├── project_structure(airflow UI).png
 │   ├── uploaded_csv_file.png
@@ -206,4 +212,155 @@ This makes it possible to view and manage DAGs from your own machine while Airfl
 --- 
 
 ## 🛠️ Installation & Setup
-1. Clone the repository
+### 1. Clone the repository
+ '''bash
+git clone https://github.com/your-username/weather-etl-pipeline.git
+cd weather-etl-pipeline
+ '''
+### 2. Create a virtual environment
+'''bash 
+python -m venv venv
+source venv/bin/activate 
+'''
+### 3. Install dependencies
+'''bash
+pip install -r requirements.txt
+'''
+### 4. Set environment variables
+
+You will need credentials for:
+
+- OpenWeatherMap API
+- AWS access
+- AWS region
+- S3 bucket
+
+Example:
+'''bash
+export OPENWEATHER_API_KEY="your_api_key"
+export AWS_ACCESS_KEY_ID="your_access_key"
+export AWS_SECRET_ACCESS_KEY="your_secret_key"
+export AWS_DEFAULT_REGION="your_region"
+export S3_BUCKET_NAME="your_bucket_name"
+''' 
+
+### 5. Start Airflow (on your EC2 instance)
+'''bash 
+airflow standalone
+'''
+
+### 6. Trigger the DAG
+Open the Airflow UI and run the ETL DAG.
+
+---
+
+## 🔐 Airflow Variables & Connections
+
+To improve security and follow best practices, sensitive data is managed using **Airflow Variables and Connections** instead of hardcoding them.
+
+### 📌 Variables Used
+
+| Variable Name | Description |
+|--------------|------------|
+| `OPENWEATHER_API_KEY` | API key for OpenWeatherMap |
+| `S3_BUCKET_NAME` | Target S3 bucket |
+
+---
+
+### ⚙️ Setting Variables in Airflow
+
+You can define variables via:
+
+#### Option 1 — Airflow UI
+- Go to **Admin → Variables**
+- Add key-value pairs
+
+#### Option 2 — CLI
+
+```bash
+airflow variables set OPENWEATHER_API_KEY your_key
+airflow variables set S3_BUCKET_NAME your_bucket
+```
+
+--- 
+## 📊 Example Output
+
+The pipeline produces a structured CSV dataset containing processed weather information.
+
+Example columns:
+
+- city
+- temperature
+- humidity
+- pressure
+- weather_description
+- timestamp
+
+The output is stored:
+
+- in the local data/ folder
+- in the configured AWS S3 bucket
+
+---
+
+## 🐳 Docker Setup
+
+This project can be fully containerized using Docker, allowing you to run Airflow and the ETL pipeline in an isolated and reproducible environment.
+
+### 📦 Docker Components
+
+- **Dockerfile** → Defines the Airflow + Python environment
+- **docker-compose.yml** → Orchestrates Airflow services (webserver, scheduler)
+
+---
+
+### 🚀 Run with Docker
+
+```bash
+cd docker
+docker-compose up --build
+```
+This will start:
+
+- Airflow Webserver
+- Airflow Scheduler
+
+Then open:
+'''bash
+http://localhost:8080
+'''
+
+---
+## 🖼️ Screenshots
+
+### Project Structure (Airflow UI)
+![Project Structure](screenshots/project_structure.png)
+
+### S3 Upload Result
+![S3 Upload](screenshots/s3_upload.png)
+
+--- 
+## 📈 Learning Outcomes
+
+Through this project, I practiced:
+
+- building modular ETL pipelines in Python
+- working with REST APIs
+- orchestrating workflows with Apache Airflow
+- deploying projects on AWS EC2
+- storing outputs in AWS S3
+- connecting remotely to cloud infrastructure using SSH
+- accessing remote web applications locally through port forwarding
+
+--- 
+## 🔮 Future Improvements
+
+---
+## 📜 License
+
+This project is licensed under the MIT License.
+--- 
+
+
+
+
