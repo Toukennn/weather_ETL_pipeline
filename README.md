@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <b>A mini data engineering project that builds and orchestrates an end-to-end ETL pipeline using Python, Apache Airflow, AWS EC2, and AWS S3.</b>
+  <b>A data engineering project that builds and orchestrates an end-to-end ETL pipeline using Python, Apache Airflow, AWS EC2, and AWS S3.</b>
 </p>
 
 ---
