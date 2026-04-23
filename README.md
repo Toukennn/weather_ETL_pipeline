@@ -5,7 +5,6 @@
   <img src="https://img.shields.io/badge/Apache%20Airflow-Orchestration-red?style=for-the-badge&logo=apacheairflow" />
   <img src="https://img.shields.io/badge/AWS-EC2%20%7C%20S3-orange?style=for-the-badge&logo=amazonaws" />
   <img src="https://img.shields.io/badge/OpenWeatherMap-API-yellow?style=for-the-badge&logo=icloud" />
-  <img src="https://img.shields.io/badge/VS%20Code-Remote%20SSH-007ACC?style=for-the-badge&logo=visualstudiocode" />
 </p>
 
 <p align="center">
