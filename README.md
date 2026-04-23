@@ -71,19 +71,22 @@ Local CSV      AWS S3 Bucket       │
 
 ---
 
-## ✨ Features
-- Modular ETL pipeline design
-- API-based data ingestion
-- Airflow DAG scheduling and orchestration
-- Remote cloud execution on EC2
-- Local and cloud storage of processed data
-- Airflow UI monitoring via localhost
+## ✨ Key Features
+
+- End-to-end ETL pipeline (Extract, Transform, Load)
+- API ingestion from OpenWeatherMap
+- Workflow orchestration with Apache Airflow
+- Cloud deployment on AWS EC2
+- Data storage in AWS S3 and local CSV
+- Containerized environment using Docker
+- Secure credential management with Airflow Variables
+- Remote development via VS Code SSH
 
 --- 
 
 ## 📂 Repository Structure
 ```bash
-weather-etl-pipeline/
+weather_ETL_pipeline/
 │
 ├── dags/
 │   └── weather_etl_dag.py
@@ -96,13 +99,11 @@ weather-etl-pipeline/
 │
 ├── data/
 │   └── weather_data.csv
-|
-|
+│
 ├── docker/
 │   ├── Dockerfile
 │   └── docker-compose.yml
-|
-|
+│
 ├── screenshots/
 │   ├── project_structure(airflow UI).png
 │   ├── uploaded_csv_file.png
@@ -207,25 +208,25 @@ Then open in your browser:
 ```bash
 http://localhost:8080
 ```
+This makes it possible to view and manage DAGs from your own machine while Airflow is running remotely. 
 
-This makes it possible to view and manage DAGs from your own machine while Airflow is running remotely.
 --- 
 
 ## 🛠️ Installation & Setup
 ### 1. Clone the repository
- '''bash
+ ```bash
 git clone https://github.com/your-username/weather-etl-pipeline.git
 cd weather-etl-pipeline
- '''
+ ```
 ### 2. Create a virtual environment
-'''bash 
+```bash 
 python -m venv venv
 source venv/bin/activate 
-'''
+```
 ### 3. Install dependencies
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 ### 4. Set environment variables
 
 You will need credentials for:
@@ -236,18 +237,18 @@ You will need credentials for:
 - S3 bucket
 
 Example:
-'''bash
+```bash
 export OPENWEATHER_API_KEY="your_api_key"
 export AWS_ACCESS_KEY_ID="your_access_key"
 export AWS_SECRET_ACCESS_KEY="your_secret_key"
 export AWS_DEFAULT_REGION="your_region"
 export S3_BUCKET_NAME="your_bucket_name"
-''' 
+``` 
 
 ### 5. Start Airflow (on your EC2 instance)
-'''bash 
+```bash 
 airflow standalone
-'''
+```
 
 ### 6. Trigger the DAG
 Open the Airflow UI and run the ETL DAG.
@@ -326,9 +327,9 @@ This will start:
 - Airflow Scheduler
 
 Then open:
-'''bash
+```bash
 http://localhost:8080
-'''
+```
 
 ---
 ## 🖼️ Screenshots
@@ -355,6 +356,53 @@ Through this project, I practiced:
 --- 
 ## 🔮 Future Improvements
 
+This project can be extended in several directions to better reflect real-world data engineering systems:
+
+### 🔄 Pipeline Enhancements
+- Support multiple cities and batch data ingestion
+- Add incremental data loading instead of full refresh
+- Introduce data validation checks (e.g., missing/null values, schema enforcement)
+- Implement retry logic and failure notifications in Airflow
+
+### 📊 Data Storage & Modeling
+- Store historical data instead of overwriting CSV files
+- Partition data in S3 by date (e.g., `year/month/day`)
+- Introduce a data warehouse layer (e.g., Snowflake, BigQuery, Redshift)
+- Apply a Medallion Architecture (Bronze → Silver → Gold)
+
+### ⚙️ Orchestration & Scalability
+- Schedule DAG runs (hourly/daily pipelines)
+- Use Airflow sensors for smarter dependency handling
+- Scale Airflow using CeleryExecutor or KubernetesExecutor
+- Separate environments (dev / staging / production)
+
+### 🔐 Security & Configuration
+- Move secrets to AWS Secrets Manager or Parameter Store
+- Use IAM roles instead of static AWS credentials
+- Improve configuration management using environment-based configs
+
+### 🐳 DevOps & Deployment
+- Fully dockerize the project with multi-container setup
+- Add CI/CD pipeline (GitHub Actions) for testing and deployment
+- Automate infrastructure setup using Terraform
+- Deploy Airflow on a managed service (e.g., MWAA)
+
+### 📈 Monitoring & Observability
+- Add structured logging
+- Integrate monitoring tools (e.g., Prometheus, Grafana)
+- Track pipeline metrics and failures
+- Add alerting (email/Slack notifications)
+
+### 🧪 Testing & Code Quality
+- Add unit tests for ETL functions
+- Introduce data quality tests (e.g., Great Expectations)
+- Apply linting and formatting (flake8, black)
+- Improve documentation and docstrings
+
+### 🤖 Advanced Extensions
+- Stream data instead of batch processing (Kafka / Kinesis)
+- Build a simple dashboard (Streamlit / Dash) on top of the data
+- Integrate ML models for weather prediction or anomaly detection
 ---
 ## 📜 License
 
