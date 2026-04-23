@@ -405,8 +405,8 @@ This project can be extended in several directions to better reflect real-world 
 - Integrate ML models for weather prediction or anomaly detection
 ---
 ## 📜 License
+This Project is licensed under the MIT license.
 
-This project is licensed under the MIT License.
 --- 
 
 
