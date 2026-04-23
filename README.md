@@ -106,7 +106,7 @@ weather_ETL_pipeline/
 │
 ├── screenshots/
 │   ├── project_structure(airflow UI).png
-│   ├── uploaded_csv_file.png
+│   ├── output_file.png
 │   └── s3_upload.png
 │
 ├── requirements.txt
