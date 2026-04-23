@@ -27,7 +27,7 @@ This project demonstrates how to build a small **production-style ETL pipeline**
 - **Uses VS Code Remote SSH** to develop directly on the cloud server
 - **Accesses the Airflow web UI** locally through SSH port forwarding
 
-This project combines **Python scripting**, **workflow orchestration**, **cloud deployment**, and **remote development** into one complete mini-project.
+This project combines **Python scripting**, **workflow orchestration**, **cloud deployment**, and **remote development** into one project.
 
 ---
 
