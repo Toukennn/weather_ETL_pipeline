@@ -101,7 +101,6 @@ weather_ETL_pipeline/
 │
 ├── docker/
 │   ├── Dockerfile
-│   └── docker-compose.yml
 │
 ├── screenshots/
 │   ├── project_structure(airflow UI).png
